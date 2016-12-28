@@ -7,11 +7,11 @@ http.createServer(function(request,response){
 
 	response.writeHead(200, {'Content-Type': 'image/jpeg'});
 
-	fs.readFile('image.jpg', (error,content) => {
+	fs.readFile('smile.jpg', (error,content) => {
 		if(error)
 			throw error;
 
-		response.wtite(content);
+		response.write(content);
 		response.end();
 	});
 
