@@ -1,5 +1,6 @@
 var http = require('http');
-var url  = require('url');
+var url = require('url');
+var querystring = require('querystring');
 
 function getTime()
 {
@@ -10,10 +11,18 @@ function getTime()
 
 http.createServer(function(request,response){
 
+	var pathname = url.parse(request.url).pathname;
+	var params = querystring.parse(url.parse(request.url).query);
+
 	response.writeHead(200, {'Content-Type': 'text/html'});
-	response.write("<div> Page '" + url.parse(request.url).pathname + "' is requested.</div>")
-	console.log("Page '" + url.parse(request.url).pathname + "' is requested.")
+	response.write("<div> Page '" + pathname + "' is requested.</div>");
+
+	for (var propName in params) {
+		response.write("<div>" + propName + " = " + params[propName] + "</div>");
+	}
+
 	response.end();
+	console.log("Page '" + pathname + "' is requested.");
 
 }).listen(8080);
 
