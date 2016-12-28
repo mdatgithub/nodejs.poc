@@ -1,6 +1,5 @@
 var http = require('http');
 
-
 function getTime()
 {
 	var d = new Date();
@@ -8,12 +7,9 @@ function getTime()
 }
 
 
-
 http.createServer(function(request,response){
 
-	//response.writeHead(200, {'Content-Type': 'text/html', 'Transfer-Encoding': 'chunked'});
-
-	response.writeHead(200, {'Content-Type': 'text/html'});
+	response.writeHead(200, {'Content-Type': 'text/html', 'Transfer-Encoding': 'chunked'});
 	response.write("<div>" + getTime() + ": Request is accepted. Begin processing ...</div>")
 	setTimeout(function(){
 		response.write("<div>" + getTime() + ": Processing completed.</div>")
