@@ -1,7 +1,11 @@
 var http = require('http');
 var fs = require('fs');
 
-
+function getTime()
+{
+	var d = new Date();
+	return d.toDateString();
+}
 
 http.createServer(function(request,response){
 
